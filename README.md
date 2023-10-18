@@ -59,7 +59,7 @@ Now that the extension is installed and active, enjoy your ad-free YouTube exper
 
 ## Support
 
-If you encounter any issues, have questions, or want to contribute to the development of this extension, please open an issue or submit a pull request.
+If you encounter any issues, have questions, or want to contribute to the development of this extension, please open an issue or submit a pull request also you can reach me out at peacefordevelopment0709@gmail.com if you need any help or you have any issue with this repo.
 
 Happy ad-free YouTube browsing!
 
