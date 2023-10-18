@@ -12,7 +12,7 @@ Follow these steps to install the YouTube Ad Sniper Extension on your Google Chr
    - Click the "Code" button at the top of this GitHub repository.
    - Select "Download ZIP" to download the extension files to your computer.
 
-<img src="https://cdn.discordapp.com/attachments/1162468054333132884/1164194156286054520/download_zip.png?ex=6542534c&is=652fde4c&hm=2d5de0b6de114aff1199feba21dfb24ee545b3c4262646567e7647a94d6d4aa9&" width="600" height= "300">
+<img src="https://cdn.discordapp.com/attachments/1162468054333132884/1164194156286054520/download_zip.png?ex=6542534c&is=652fde4c&hm=2d5de0b6de114aff1199feba21dfb24ee545b3c4262646567e7647a94d6d4aa9&" width="600" height= "350">
 
 2. **Unzip the Files:**
 
@@ -23,7 +23,7 @@ Follow these steps to install the YouTube Ad Sniper Extension on your Google Chr
 
    - In your Google Chrome browser, go to the menu (three vertical dots in the top-right corner) and select "More tools" > "Extensions."
 
-   ![Chrome Menu](https://cdn.discordapp.com/attachments/1162468054333132884/1164195101350834226/Screenshot_2023-10-18_at_7.05.32_PM.png?ex=6542542d&is=652fdf2d&hm=cd7e8c1e77074a8e49d325620b14cd2cf1f2ab2252f00bf6a97a3cd91607dd0f&)
+<img src="https://cdn.discordapp.com/attachments/1162468054333132884/1164195101350834226/Screenshot_2023-10-18_at_7.05.32_PM.png?ex=6542542d&is=652fdf2d&hm=cd7e8c1e77074a8e49d325620b14cd2cf1f2ab2252f00bf6a97a3cd91607dd0f&" width="600" height="250">
 
 4. **Enable Developer Mode:**
 
