@@ -1,1 +1,57 @@
+
 # AdAssassin
+
+ AdAssassin Extension is a handy tool that helps you eliminate annoying ads while enjoying your favorite videos on YouTube. With just a few simple steps, you can have a smooth, ad-free experience on the platform. Let's get started!
+
+## Installation
+
+Follow these steps to install the YouTube Ad Sniper Extension on your Google Chrome browser:
+
+1. **Download the Extension:**
+
+   - Click the "Code" button at the top of this GitHub repository.
+   - Select "Download ZIP" to download the extension files to your computer.
+
+   ![Download ZIP](assets/download-zip.png)
+
+2. **Unzip the Files:**
+
+   - Locate the downloaded ZIP file (usually in your "Downloads" folder) and unzip it.
+   - You can do this by right-clicking on the ZIP file and selecting "Extract All" (or a similar option depending on your operating system).
+
+3. **Open Chrome's Extension Page:**
+
+   - In your Google Chrome browser, go to the menu (three vertical dots in the top-right corner) and select "More tools" > "Extensions."
+
+   ![Chrome Menu](assets/chrome-menu.png)
+
+4. **Enable Developer Mode:**
+
+   - In the Extensions page, make sure the "Developer mode" checkbox in the top-right corner is checked.
+
+   ![Developer Mode](assets/developer-mode.png)
+
+5. **Load the Extension:**
+
+   - Click the "Load unpacked" button that appears after enabling Developer mode.
+   - Browse to the folder where you unzipped the extension files and select the extension folder.
+
+   ![Load Unpacked](assets/load-unpacked.png)
+
+6. **Activate the Extension:**
+
+   - Once you've loaded the extension, it should appear in the list of installed extensions.
+   - Make sure the toggle switch next to the "AdAssassin" is set to ON.
+
+   ![Enable Extension](assets/enable-extension.png)
+
+## Usage
+
+Now that the extension is installed and active, enjoy your ad-free YouTube experience. Visit YouTube, play a video, and let the extension do the work for you.
+
+## Support
+
+If you encounter any issues, have questions, or want to contribute to the development of this extension, please [open an issue](https://github.com/yourusername/your-repo/issues) or [submit a pull request](https://github.com/yourusername/your-repo/pulls).
+
+Happy ad-free YouTube browsing!
+
