@@ -1,0 +1,14 @@
+{
+    "manifest_version": 3,
+    "name": "AdAssassin",
+    "version": "1.0",
+    "description": "Say Goodbye to Youtube ads!",
+    "permissions": ["activeTab", "scripting"],
+    "content_scripts": [
+      {
+        "matches": ["*://*.youtube.com/*"],
+        "js": ["content.js"]
+      }
+    ]
+  }
+  
