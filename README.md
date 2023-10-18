@@ -7,6 +7,10 @@
 
 Follow these steps to install the YouTube Ad Sniper Extension on your Google Chrome browser:
 
+## Video tutorial
+
+Yes dumbs, got you covered- https://youtu.be/i3T6BS1heYc
+
 1. **Download the Extension:**
 
    - Click the "Code" button at the top of this GitHub repository.
