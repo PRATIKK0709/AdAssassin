@@ -46,7 +46,7 @@ Follow these steps to install the YouTube Ad Sniper Extension on your Google Chr
    - Once you've loaded the extension, it should appear in the list of installed extensions.
    - Make sure the toggle switch next to the "AdAssassin" is set to ON.
 
-   ![Enable Extension](assets/enable-extension.png)
+<img src="https://cdn.discordapp.com/attachments/1162468054333132884/1164198505217273946/Screenshot_2023-10-18_at_7.19.07_PM.png?ex=65425759&is=652fe259&hm=f3a7dcf3befe1e4e8eac010816a9c5fdf73e374fd0bfef8d3c6d59a407361695&" width="400" height="250">
 
 ## Usage
 
