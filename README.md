@@ -3,13 +3,13 @@
 
  AdAssassin Extension is a handy tool that helps you eliminate annoying ads while enjoying your favorite videos on YouTube. With just a few simple steps, you can have a smooth, ad-free experience on the platform. Let's get started!
 
-## Installation
-
-Follow these steps to install the YouTube Ad Sniper Extension on your Google Chrome browser:
-
 ## Video tutorial
 
 Yes dumbs, got you covered- https://youtu.be/i3T6BS1heYc
+
+## Installation
+
+Follow these steps to install the YouTube Ad Sniper Extension on your Google Chrome browser:
 
 1. **Download the Extension:**
 
