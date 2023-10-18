@@ -54,7 +54,7 @@ Now that the extension is installed and active, enjoy your ad-free YouTube exper
 
 ## Support
 
-If you encounter any issues, have questions, or want to contribute to the development of this extension, please [open an issue](https://github.com/yourusername/your-repo/issues) or [submit a pull request](https://github.com/yourusername/your-repo/pulls).
+If you encounter any issues, have questions, or want to contribute to the development of this extension, please [open an issue](https://github.com/PRATIK0709/AdAssassin/issues) or [submit a pull request](https://github.com/PRATIK0709/AdAssassin/pulls).
 
 Happy ad-free YouTube browsing!
 
