@@ -37,6 +37,8 @@ The `handleYouTube` function serves as a coordinator for the removal of various 
 
 The `setInterval` function establishes a recurring interval for executing the `handleYouTube` function. This means that every `checkInterval` milliseconds, the code attempts to skip and remove ads from the YouTube page.
 
+# Tutorial
+
 In summary, this code is designed to enhance the YouTube user experience by automatically managing and removing different types of ads and ad-related elements, resulting in a more uninterrupted interaction with the platform. The script operates at regular intervals to ensure a seamless viewing experience.
 
 
