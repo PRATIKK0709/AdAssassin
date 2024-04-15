@@ -1,129 +1,167 @@
-const CHECK_INTERVAL = 100;
-let timer;
 
-const debounce = (func, delay) => {
-  clearTimeout(timer);
-  timer = setTimeout(() => func.apply(this, arguments), delay);
-};
+(function() {
+    'use strict';
 
-const debouncedHandleYouTube = debounce(handleYouTube, CHECK_INTERVAL);
+    const adblocker = true;
+    const removePopup = false;
+    const debugMessages = true;
 
-function safeClick(element) {
-  try {
-    element?.click();
-  } catch (error) {
-    console.error('Error clicking element:', error);
-  }
-}
+    let currentUrl = window.location.href;
+    let isAdFound = false;
+    let adLoop = 0;
 
-function skipAds() {
-  const adOverlayCloseButton = document.querySelector(".ytp-ad-overlay-close-button");
-  const skipAdButton = document.querySelector(".ytp-ad-text.ytp-ad-skip-button-text");
-  const incomingAdAlert = document.querySelector(".ytp-ad-message-container");
+    function log(log, level = 'l', ...args) {
+        if (!debugMessages) return;
 
-  safeClick(adOverlayCloseButton);
-  safeClick(skipAdButton);
-
-  incomingAdAlert?.remove();
-}
-
-function removeAds() {
-  const sideAdsSelector = ".style-scope.ytd-watch-next-secondary-results-renderer.sparkles-light-cta.GoogleActiveViewElement, .style-scope.ytd-item-section-renderer.sparkles-light-cta";
-  const sideAds = document.querySelectorAll(sideAdsSelector);
-
-  sideAds.forEach(sideAd => sideAd.style.display = "none");
-
-  const companionSlot = document.querySelector(".style-scope.ytd-companion-slot-renderer");
-  companionSlot?.remove();
-
-  const videoAds = document.querySelector(".video-ads.ytp-ad-module");
-  if (videoAds?.children.length > 0) {
-    const previewText = document.querySelector(".ytp-ad-text.ytp-ad-preview-text");
-    const videoElement = document.querySelector(".video-stream.html5-main-video");
-
-    if (previewText) {
-      const playbackRateForPreviewText = 16;
-      videoElement.playbackRate = playbackRateForPreviewText;
+        const prefix = 'Remove YouTube Ads:';
+        const message = `${prefix} ${log}`;
+        switch (level) {
+            case 'e':
+            case 'err':
+            case 'error':
+                console.error(message, ...args);
+                break;
+            case 'l':
+            case 'log':
+                console.log(message, ...args);
+                break;
+            case 'w':
+            case 'warn':
+            case 'warning':
+                console.warn(message, ...args);
+                break;
+            case 'i':
+            case 'info':
+            default:
+                console.info(message, ...args);
+                break;
+        }
     }
-  }
-}
 
-function handleYouTube() {
-  skipAds();
-  removeAds();
-}
+    function removeAds() {
+        log("removeAds()");
+        setInterval(() => {
+            const video = document.querySelector('video');
+            const ad = [...document.querySelectorAll('.ad-showing')][0];
 
-const observer = new MutationObserver(() => {
-  try {
-    debouncedHandleYouTube();
-  } catch (error) {
-    console.error('Error in MutationObserver callback:', error);
-  }
-});
+            if (window.location.href !== currentUrl) {
+                currentUrl = window.location.href;
+                removePageAds();
+            }
 
-observer.observe(document.body, { childList: true, subtree: true });
+            if (ad) {
+                isAdFound = true;
+                adLoop++;
 
-handleYouTube();  // Initial execution
-const debounce = (func, delay) => {
-  let timer;
-  return function () {
-    clearTimeout(timer);
-    timer = setTimeout(() => func.apply(this, arguments), delay);
-  };
-};
+                if (adLoop < 10) {
+                    const openAdCenterButton = document.querySelector('.ytp-ad-button-icon');
+                    openAdCenterButton?.click();
 
-const checkInterval = 100;
-const debouncedHandleYouTube = debounce(handleYouTube, checkInterval);
+                    const blockAdButton = document.querySelector('[label="Block ad"]');
+                    blockAdButton?.click();
 
-function safeClick(element) {
-  if (element) {
-    try {
-      element.click();
-    } catch (error) {
-      console.error('Error clicking element:', error);
+                    const blockAdButtonConfirm = document.querySelector('.Eddif [label="CONTINUE"] button');
+                    blockAdButtonConfirm?.click();
+
+                    const closeAdCenterButton = document.querySelector('.zBmRhe-Bz112c');
+                    closeAdCenterButton?.click();
+                } else {
+                    if (video) video.play();
+                }
+
+                const popupContainer = document.querySelector('body > ytd-app > ytd-popup-container > tp-yt-paper-dialog');
+                if (popupContainer && popupContainer.style.display === "")
+                    popupContainer.style.display = 'none';
+
+                log("Found Ad");
+
+                const skipButtons = ['ytp-ad-skip-button-container', 'ytp-ad-skip-button-modern', '.videoAdUiSkipButton', '.ytp-ad-skip-button', '.ytp-ad-skip-button-modern', '.ytp-ad-skip-button', '.ytp-ad-skip-button-slot'];
+                if (video) {
+                    video.playbackRate = 10;
+                    video.volume = 0;
+                    skipButtons.forEach(selector => {
+                        const elements = document.querySelectorAll(selector);
+                        if (elements && elements.length > 0) {
+                            elements.forEach(element => {
+                                element?.click();
+                            });
+                        }
+                    });
+                    video.play();
+                    let randomNumber = Math.random() * (0.5 - 0.1) + 0.1;
+                    video.currentTime = video.duration + randomNumber || 0;
+                }
+                log("Skipped Ad (✔️)");
+            } else {
+                if (video && video?.playbackRate === 10) video.playbackRate = 1;
+                if (isAdFound) {
+                    isAdFound = false;
+                    if (video && isFinite(video.playbackRate)) video.playbackRate = video.playbackRate;
+                    adLoop = 0;
+                } else {
+                    if (video) video.playbackRate = video.playbackRate;
+                }
+            }
+        }, 50);
+        removePageAds();
     }
-  }
-}
 
-function skipAds() {
-  const adOverlayCloseButton = document.querySelector(".ytp-ad-overlay-close-button");
-  const skipAdButton = document.querySelector(".ytp-ad-text.ytp-ad-skip-button-text");
-  const incomingAdAlert = document.querySelector(".ytp-ad-message-container");
-
-  safeClick(adOverlayCloseButton);
-  safeClick(skipAdButton);
-
-  incomingAdAlert?.remove();
-}
-
-function removeAds() {
-  const sideAdsSelector = ".style-scope.ytd-watch-next-secondary-results-renderer.sparkles-light-cta.GoogleActiveViewElement, .style-scope.ytd-item-section-renderer.sparkles-light-cta";
-  const sideAds = document.querySelectorAll(sideAdsSelector);
-
-  sideAds.forEach(sideAd => sideAd.style.display = "none");
-
-  const companionSlot = document.querySelector(".style-scope.ytd-companion-slot-renderer");
-  const videoAds = document.querySelector(".video-ads.ytp-ad-module");
-
-  companionSlot?.remove();
-
-  if (videoAds && videoAds.children.length > 0) {
-    const previewText = document.querySelector(".ytp-ad-text.ytp-ad-preview-text");
-    const videoElement = document.querySelector(".video-stream.html5-main-video");
-
-    if (previewText) {
-      const playbackRateForPreviewText = 16;
-      videoElement.playbackRate = playbackRateForPreviewText;
+    function removePageAds() {
+        const sponsor = document.querySelectorAll("div#player-ads.style-scope.ytd-watch-flexy, div#panels.style-scope.ytd-watch-flexy");
+        const style = document.createElement('style');
+        style.textContent = `
+            ytd-action-companion-ad-renderer,
+            ytd-display-ad-renderer,
+            ytd-video-masthead-ad-advertiser-info-renderer,
+            ytd-video-masthead-ad-primary-video-renderer,
+            ytd-in-feed-ad-layout-renderer,
+            ytd-ad-slot-renderer,
+            yt-about-this-ad-renderer,
+            yt-mealbar-promo-renderer,
+            ytd-statement-banner-renderer,
+            ytd-ad-slot-renderer,
+            ytd-in-feed-ad-layout-renderer,
+            ytd-banner-promo-renderer-background
+            statement-banner-style-type-compact,
+            .ytd-video-masthead-ad-v3-renderer,
+            div#root.style-scope.ytd-display-ad-renderer.yt-simple-endpoint,
+            div#sparkles-container.style-scope.ytd-promoted-sparkles-web-renderer,
+            div#main-container.style-scope.ytd-promoted-video-renderer,
+            div#player-ads.style-scope.ytd-watch-flexy,
+            ad-slot-renderer,
+            ytm-promoted-sparkles-web-renderer,
+            masthead-ad,
+            tp-yt-iron-overlay-backdrop,
+            #masthead-ad {
+                display: none !important;
+            }
+        `;
+        document.head.appendChild(style);
+        sponsor?.forEach((element) => {
+            if (element.getAttribute("id") === "rendering-content") {
+                element.childNodes?.forEach((childElement) => {
+                    if (childElement?.data.targetId && childElement?.data.targetId !== "engagement-panel-macro-markers-description-chapters") {
+                        element.style.display = 'none';
+                    }
+                });
+            }
+        });
+        log("Removed page ads (✔️)");
     }
-  }
-}
 
-function handleYouTube() {
-  skipAds();
-  removeAds();
-}
+    function handleYouTube() {
+        removeAds();
+    }
 
-const observer = new MutationObserver(debouncedHandleYouTube);
-observer.observe(document.body, { childList: true, subtree: true });
+    const observer = new MutationObserver(() => {
+        try {
+            handleYouTube();
+        } catch (error) {
+            console.error('Error in MutationObserver callback:', error);
+        }
+    });
 
-handleYouTube();  // Initial execution
+    observer.observe(document.body, { childList: true, subtree: true });
+
+    handleYouTube();  // Initial execution
+})();
