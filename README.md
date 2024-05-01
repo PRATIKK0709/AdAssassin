@@ -3,39 +3,41 @@
 
  AdAssassin Extension is designed to improve the user experience on the YouTube website by automatically managing and removing various types of advertisements that may appear during video playback.
 
-## Variables and Constants
+## Overview
+This script aims to remove ads from YouTube videos by targeting various ad elements and manipulating their display properties. It also includes features like skipping ads and handling popups.
 
-- **checkInterval**: A constant that defines the interval in milliseconds at which the `handleYouTube` function is executed.
+## Codebase Explanation
+The codebase consists of several components and functionalities:
 
-## `skipAds` Function
+### Constants
+- `adblocker`: A boolean indicating whether an ad blocker is active.
+- `removePopup`: A boolean determining if popups should be removed.
+- `debugMessages`: A boolean controlling the display of debug messages.
 
-The `skipAds` function is responsible for handling and concealing different types of video ads on YouTube. It looks for three key elements on the page:
+### Logging Function
+A `log()` function is provided to handle logging messages with different levels (`error`, `log`, `warn`, `info`). Debug messages are logged based on the `debugMessages` constant.
 
-- **adOverlayCloseButton**: The button used to close overlay ads.
-- **skipAdButton**: The button that allows users to skip video ads.
-- **incomingAdAlert**: An alert message that occasionally appears just before an ad begins.
+### Ad Removal Functions
+- `removeAds()`: This function targets and removes video ads. It continuously checks for the presence of ads and removes them accordingly. It also handles skipping ads and adjusting playback settings.
+- `removePageAds()`: This function targets and removes page-level ads such as banners, sponsor content, and ad slots.
 
-If any of these elements are found, the code takes appropriate actions:
+### YouTube Handling
+- `handleYouTube()`: This function orchestrates the ad removal process for YouTube videos. It calls `removeAds()` to start the ad removal process.
 
-- Clicks the `adOverlayCloseButton` to close overlay ads (if available).
-- Clicks the `skipAdButton` to skip video ads (if available).
-- Hides the `incomingAdAlert` by setting its style to "none" if it exists.
+### Mutation Observer
+A `MutationObserver` is set up to detect changes in the DOM. When changes occur, it triggers the `handleYouTube()` function to ensure ad removal functionality is applied to dynamically loaded content.
 
-## `removeAds` Function
+### Initialization
+The script is self-executing and starts by calling the `handleYouTube()` function to initiate the ad removal process. Additionally, a Mutation Observer is set up to handle dynamically loaded content.
 
-The `removeAds` function is designed to eliminate or hide various elements associated with ads on YouTube. It identifies and selects different ad-related elements, including:
+## Usage
+To use this script, simply include it in your web browser's developer console or integrate it into a browser extension. Ensure that the script is executed on YouTube's domain to target YouTube ads effectively.
 
-- **sideAds**: Elements representing side ads on the YouTube interface, which are hidden by setting their display style to "none."
-- **companionSlot**: If found, it removes the companion ad slot, which is typically displayed next to the video player.
-- **videoAds**: Selection of the video ads container, along with a check to see if it has child elements. If a `previewText` element is found, it adjusts the video element's playback rate to 16x, effectively shortening ad content.
+## Notes
+- This script may become outdated if YouTube's DOM structure or ad delivery mechanism changes.
+- Usage of this script may violate YouTube's terms of service. Proceed with caution and at your own risk.
+- Debug messages can be enabled or disabled by modifying the `debugMessages` constant.
 
-## `handleYouTube` Function
-
-The `handleYouTube` function serves as a coordinator for the removal of various types of ads. It calls both the `skipAds` and `removeAds` functions to ensure a smoother user experience.
-
-## `setInterval` Function
-
-The `setInterval` function establishes a recurring interval for executing the `handleYouTube` function. This means that every `checkInterval` milliseconds, the code attempts to skip and remove ads from the YouTube page.
 
 ## Summary
 
