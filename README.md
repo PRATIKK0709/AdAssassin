@@ -51,6 +51,6 @@ https://github.com/PRATIKK0709/AdAssassin/blob/main/tutorial.md
 
 If you find this project useful or interesting, you can support my work by buying me a coffee! Every cup fuels more cool projects like this!
 
-[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://www.buymeacoffee.com/gbraad)
+[![Buy Me A Coffee](https://www.buymeacoffee.com/assets/img/custom_images/orange_img.png)](https://buymeacoffee.com/peace0709)
 
 
